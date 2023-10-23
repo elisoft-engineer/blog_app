@@ -25,6 +25,6 @@ These instructions will help you get a copy of the project up and running on you
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/blog-app.git
-cd blog-app
+git clone https://github.com/elisoft-engineer/blog_app.git
+cd blog_app
 
