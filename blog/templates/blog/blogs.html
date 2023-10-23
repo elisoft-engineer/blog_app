@@ -1,0 +1,33 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+  {% load crispy_forms_tags %}
+  <div class="container mt-5">
+    <div class="row mt-5 pt-5">
+      <div class="col-md-6 offset-md-3">
+        {% for blog in blogs %}
+        <div class="card mb-3">
+          <div class="card-body">
+            <div>
+              <div style="display: flex; align-items: center;">
+                <img class="ml-auto rounded-circle account-img"
+                  src="{{ blog.author.profile.image.url }}"
+                  alt="{{ user.username }}"
+                  height="65"
+                />
+                <h5 class="text-muted">
+                  <a class="text-info text-sm" href="{% url 'profile' blog.author.pk %}">{{ blog.author.username }}</a>
+                </h5>
+              </div>
+              <a class="text-primary" style="font-size: 1.2rem; font-weight: bold; flex: 1;" href="{% url 'detail' blog.pk %}">{{ blog.title }}</a>
+            </div>
+            <p class="mt-3">{{ blog.content }}</p>
+            <small class="text-secondary">Date Posted: {{ blog.date_posted }}</small>
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-info">No blogs available.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+  {% load crispy_forms_tags %}
+  <div class="container mt-5">
+    <div class="row mt-5 pt-5">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p class="text-info">You are about to delete the post</p>
+        <div style="display: flex;">
+          <a href="{% url 'delete_confirm' blog.id %}" class="btn btn-danger mx-auto">Delete</a>
+          <a href="{% url 'blogs' %}" class="btn btn-secondary mx-auto">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

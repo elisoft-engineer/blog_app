@@ -1,0 +1,54 @@
+{% extends 'blog/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+  <div class="media row justify-content-center">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+      <img
+        class="rounded-circle account-img"
+        src="{{ given_user.profile.image.url }}"
+        alt="{{ user.username }}"
+        height="150"
+      />
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 pt-5">
+      <h4 class="account-heading">{{ given_user.first_name }}</h4>
+      <p class="text-secondary">{{ given_user.email }}</p>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-6 offset-md-3">
+      {% if given_user == request.user %}
+      <div class="card">
+        <div class="card-body">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              
+              <div class="mt-2">
+                <fieldset>
+                  {{ u_form|crispy }}
+                </fieldset> 
+                <fieldset class="mt-4">
+                  {{ p_form|crispy }}
+                </fieldset>
+                <button type="submit" class="btn btn-info">Update</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      {% else %}
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-muted mx">About</h4>
+            <p class="border-bottom mt-2">Full name : <span class="text-secondary">{{ given_user.first_name }} {{ given_user.last_name }}</span></p>
+            <p class="border-bottom mt-2">Email : <span class="text-secondary">{{ given_user.email }}</span></p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row mt-5 pt-5">
+      <div class="col-md-6 offset-md-3">
+        <p class="text-info">You can only access resources that belong to you</p>
+        <a href="{% url 'blogs' %}" class="btn btn-secondary">Go Back</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
