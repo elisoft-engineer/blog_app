@@ -17,7 +17,7 @@ These instructions will help you get a copy of the project up and running on you
 ### Prerequisites
 
 - Python (3.7 or higher)
-- Pipenv
+- Pipenv or virtualenv
 - Git
 
 ### Installation
@@ -48,6 +48,8 @@ Navigate to your project directory.
 
 Create a virtual environment: python -m venv envname
 
+Or : virtualenv envname if you have virtualenv
+
 Activate the virtual environment: source envname/bin/activate
 
 For macOS M1 (Apple Silicon), use: source envname/bin/activate.csh if needed.
@@ -57,7 +59,18 @@ Remember to deactivate the virtual environment when done using: deactivate (for 
 2. Clone the repository:
 
 change the directory to your virtual environment before cloning
-```bash
+`bash
 git clone https://github.com/elisoft-engineer/blog_app.git
-cd blog_app
+cd blog_app `
+
+3. Install reqirements
+
+run pip install -r requirements.txt
+
+4. Run the server
+
+run python manage.py runserver
+
+#Thats it!
+   
 
