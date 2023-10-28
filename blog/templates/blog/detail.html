@@ -1,0 +1,28 @@
+{% extends 'blog/main.html' %}
+{% block content %}
+  {% load crispy_forms_tags %}
+  <div class="container mt-5">
+    <div class="row mt-5 pt-5">
+      <div class="col-md-6 offset-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h3>{{ blog.title }}</h3>
+            {% if user.id == blog.author.id %}
+            <h4 class="text-info">By Me</h4>
+            {% else %}
+            <h4 class="text-info">By -- {{ blog.author }}</h4>
+            {% endif %}
+            <p>{{ blog.content }}</p>
+            <small class="text-secondary">Date Posted: {{ blog.date_posted }}</small>
+          </div>
+        </div>
+        {% if user.id == blog.author.id %}
+        <div style="display: flex;">
+          <a href="{% url 'update' blog.id %}" class="btn btn-secondary">Update</a>
+          <a href="{% url 'delete' blog.id %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
